@@ -5,7 +5,7 @@
 <%
 System.out.println("dform ready to go");
 int no = Integer.parseInt(request.getParameter("no"));
-GuestbookVO guestbookvo = (GuestbookVO)request.getAttribute("guestbookvo");
+GuestbookVO guestbookvo = (GuestbookVO) request.getAttribute("guestbookvo");
 System.out.println(no);
 %>
 
@@ -17,8 +17,8 @@ System.out.println(no);
 </head>
 <body>
 	<form action="http://localhost:8080/guestbook2/gbc" method="get">
-		<input type="hidden" name="action" value="delete">
-		<input type="hidden" name="no" value="<%= no %>">
+		<input type="hidden" name="action" value="delete"> <input
+			type="hidden" name="no" value="<%=no%>">
 		<table>
 			<tr>
 				<td>비밀번호</td>
@@ -29,9 +29,18 @@ System.out.println(no);
 			</tr>
 		</table>
 	</form>
+	<%
+	String errorMsg = (String) request.getAttribute("errorMsg");
+	if (errorMsg != null) {
+	%>
+	<p style="color: red;"><%=errorMsg%></p>
+	<%
+	}
+	%>
 
 	<br>
 	<br>
-	<a href="http://localhost:8080/guestbook2/gbc?action=list">메인으로 돌아가기</a>
+	<a href="http://localhost:8080/guestbook2/gbc?action=list">메인으로
+		돌아가기</a>
 </body>
 </html>
